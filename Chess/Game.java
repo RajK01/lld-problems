@@ -1,25 +1,26 @@
 package Chess;
 
+import java.io.ObjectInputFilter;
+
 public class Game {
     private Player whitePlayer;
     private Player blackPlayer;
-    private Board board;
+    private Board[][] board;
+    private Status status;
 
     public Game(Player whitPlayer, Player blackPlayer, Board board) {
         this.whitePlayer = whitPlayer;
         this.blackPlayer = blackPlayer;
         this.board = board;
+        this.status = "Ongoing";
     }
 
     public void startGame() {
-        while(!gameOver()) {
-
-        }
+        System.out.println("Game Started!");
     }
 
     public boolean isGameOver() {
-        // Check of check&mate or Draw conditions
-        
+        return Status.equals("over");
     }
 
     public void switchTurn() {

@@ -1,22 +1,43 @@
-import java.util.Date;
+package ParkingLot;
+
+import java.time.LocalDateTime;
 
 public class ParkingTicket {
-    private Date entryTime;
-    private Vehicle vehicle;
-    private ParkingSpot = spot;
+    private String ticketID;
+    private LocalDateTime startTime;
+    private LocalDateTime endTime;
+    private String parkingSlotID;
+    private double amount;
 
-    public ParkingTicket(Date entryTime, Vehicle vehicle, ParkingSpot spot) {
-        this.entryTime = entryTime;
-        this.vehicle = vehicle;
-        this.spot = new Date();
+    public ParkingTicket(String ticketID, String parkingSlotID) {
+        this.ticketID = ticketID;
+        this.parkingSlotID = parkingSlotID;
+        this.startTime = LocalDateTime.now();
     }
 
-    public long getParkingDuration() {
-        Date curTime = new Date();
-        return (curTime.getTime() - entryTime.getTime())/(60*60); // Duration in hours
+    public void endTicket() {
+        this.endTime = LocalDateTime.now();
     }
 
-    public ParkingSpot getParkingSpot() {
-        return spot;
+    public double calculateAmount(double hourlyRate) {
+        long hours = java.time.Duration.between(startTime, endTime).toHours();
+        amount = hours * hourlyRate;
+        return amount;
+    }
+
+    public String getParkingSlotID() {
+        return parkingSlotID;
+    }
+
+    public LocalDateTime getStartTime() {
+        return startTime;
+    }
+
+    public LocalDateTime getEndTime() {
+        return endTime;
+    }
+
+    public double getAmount() {
+        return amount;
     }
 }

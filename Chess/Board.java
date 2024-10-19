@@ -10,8 +10,14 @@ public class Board {
 
     private void initializeBoard() {
         // Place all pieces on the board in starting positions
+        for(int i = 0; i < 8; i++) {
+            for(int j = 0; j < 8; j++) {
+                squares[i][j] = new Piece(i, j);
+            }
+        }
+        System.out.println("Board Setup Complete!");
     }
-
+ 
     public boolean isMoveValid(Move move) {
         // Validate move for the piece at move's starting position
     }
